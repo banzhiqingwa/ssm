@@ -17,7 +17,6 @@ public class AccountController {
 
     @RequestMapping("/findAll")
     public ModelAndView findAll(){
-        System.out.println("服务器访问到了。。");
         List<Account> accountList = accountService.findAll();
         ModelAndView mv = new ModelAndView();
         mv.addObject("accountList",accountList);
@@ -27,10 +26,9 @@ public class AccountController {
 
     @RequestMapping("/saveAccount")
     public String saveAccount(){
-        System.out.println("服务器访问到了。。");
         Account account = new Account();
-        account.setMoney(2000f);
-        account.setName("test2");
+        account.setMoney(3000f);
+        account.setName("test3");
         accountService.saveAccount(account);
         return "redirect:findAll";
     }
