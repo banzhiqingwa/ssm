@@ -9,18 +9,19 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 @Service("accountService")
 public class AccountServiceImpl implements IAccountService {
+    @Autowired
+    private IAccountDao accountDao;
 
     /* 功能：保存账户
      ******/
     @Override
     public void saveAccount(Account account) {
-        System.out.println("保存了账户");
+        accountDao.saveAccount(account);
     }
     /* 功能：查询所有账户
      ******/
     @Override
     public List<Account> findAll() {
-        System.out.println("查询到了账户");
-        return null;
+        return accountDao.findAll();
     }
 }

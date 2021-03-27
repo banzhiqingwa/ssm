@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/account")
 public class AccountController {
@@ -14,16 +16,22 @@ public class AccountController {
     private IAccountService accountService;
 
     @RequestMapping("/findAll")
-    public String findAll(){
+    public ModelAndView findAll(){
         System.out.println("服务器访问到了。。");
-        accountService.findAll();
-        return "success";
+        List<Account> accountList = accountService.findAll();
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("accountList",accountList);
+        mv.setViewName("success");
+        return mv;
     }
 
     @RequestMapping("/saveAccount")
     public String saveAccount(){
         System.out.println("服务器访问到了。。");
-        accountService.saveAccount(new Account());
-        return "success";
+        Account account = new Account();
+        account.setMoney(2000f);
+        account.setName("test2");
+        accountService.saveAccount(account);
+        return "redirect:findAll";
     }
 }
