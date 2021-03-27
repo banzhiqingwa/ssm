@@ -5,5 +5,6 @@
 </head>
 <body>
     <a href="${pageContext.request.contextPath}/account/findAll">测试</a>
+    <a href="${pageContext.request.contextPath}/account/saveAccount">测试</a>
 </body>
 </html>
